@@ -1,4 +1,5 @@
-require("dotenv").config();
+const dotenv = require("dotenv");
+dotenv.config({ path: `${__dirname}/.env` });
 
 const mongoose = require("mongoose");
 const app = require("./app");
@@ -11,11 +12,6 @@ mongoose
   })
   .then((cons) => {
     console.log("Connected to mongoDB 🔌");
-    app.listen(
-      port,
-      app.listen(port, () => {
-        console.log(`We are listing to port: ${port} `);
-      })
-    );
+    app.listen(port, () => console.log(`Listening to port ${port}`));
   })
   .catch((err) => console.log(err));
